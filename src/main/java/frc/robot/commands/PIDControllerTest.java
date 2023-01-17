@@ -4,16 +4,22 @@
 
 package frc.robot.commands;
 
+import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
+import com.ctre.phoenix.motorcontrol.TalonFXSensorCollection;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class PIDControllerTest extends CommandBase {
   PIDController PID = new PIDController(0,0,0);
   Timer t;
-  MotorController motor;
-  Double measurement;
+  int port = 26;
+  // Not sure if this should be WPI_TalonFX or just TalonFX. (Both classes exist)
+  WPI_TalonFX talon = new WPI_TalonFX(port);
+  TalonFXSensorCollection encoder = new TalonFXSensorCollection(talon);
   /** Creates a new PIDControllerTest. */
   public PIDControllerTest() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -29,7 +35,7 @@ public class PIDControllerTest extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    motor.set(PID.calculate(measurement));
+    talon.set(TalonFXControlMode.PercentOutput, PID.calculate(encoder.getIntegratedSensorPosition()));
     if (PID.atSetpoint()) {
       PID.reset();
     } else {
