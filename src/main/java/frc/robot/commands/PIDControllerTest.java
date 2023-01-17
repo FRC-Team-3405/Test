@@ -6,17 +6,20 @@ package frc.robot.commands;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxPIDController;
+import com.revrobotics.CANSparkMax.ControlType;
 
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class PIDControllerTest extends CommandBase {
-  PIDController PID = new PIDController(0,0,0);
   Timer t;
   int id = 26;
+  double Kp,Ki,Kd,Kff;
+  double setpoint;
   CANSparkMax spark = new CANSparkMax(id, CANSparkMax.MotorType.kBrushless);
   RelativeEncoder neoEncoder = spark.getEncoder();
+  SparkMaxPIDController PID = spark.getPIDController();
   /** Creates a new PIDControllerTest. */
   public PIDControllerTest() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -25,19 +28,16 @@ public class PIDControllerTest extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    PID.setSetpoint(1.0);
-    t.start();
+    PID.setP(Kp);
+    PID.setI(Ki);
+    PID.setD(Kd);
+    PID.setFF(Kff);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    spark.set(PID.calculate(neoEncoder.getPosition()));
-    if (PID.atSetpoint()) {
-      PID.reset();
-    } else {
-      t.reset();
-    }
+    PID.setReference(setpoint, ControlType.kPosition);
   }
 
   // Called once the command ends or is interrupted.
@@ -47,6 +47,6 @@ public class PIDControllerTest extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return t.hasElapsed(2.0);
+    return false;
   }
 }
