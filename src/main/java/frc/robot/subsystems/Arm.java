@@ -9,6 +9,7 @@ import frc.robot.Constants.CANBusIDs.ArmConstants;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
@@ -18,8 +19,14 @@ public class Arm extends SubsystemBase {
   CANSparkMax leftExtend = new CANSparkMax(ArmConstants.leftExtenderID, MotorType.kBrushless);
   CANSparkMax rightExtend = new CANSparkMax(ArmConstants.rightExtenderID, MotorType.kBrushless);
 
+  MotorControllerGroup extender = new MotorControllerGroup(leftExtend, rightExtend);
+  MotorControllerGroup rotator = new MotorControllerGroup(leftRotate, rightRotate);
+
   /** Creates a new Arm. */
-  public Arm() {}
+  public Arm() {
+    rightRotate.setInverted(true);
+    rightExtend.setInverted(true);
+  }
 
   @Override
   public void periodic() {
