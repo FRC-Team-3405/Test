@@ -6,6 +6,7 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.PIDControllerTest;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.DriveTrain;
@@ -23,6 +24,10 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+  
+  /*Note to self: check if trying to compile/deploy code without the drive train hooked up will throw an
+  *error due to new DriveTrain(), ArcadeDrive's requirement of RobotContainer.driveTrain, 
+  
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public final static DriveTrain driveTrain = new DriveTrain();
   public final static PIDTest PIDtest = new PIDTest();
@@ -35,8 +40,9 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-    // Default Command
+    // Default Command(s)
     driveTrain.setDefaultCommand(new ArcadeDrive());
+    PIDTest.setDefaultCommand(new PIDControllerTest());
   }
 
   /**
@@ -55,7 +61,11 @@ public class RobotContainer {
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    
+    /*Temporary removal of code that may affect the use of Xbox Button B as used in PIDControllerTest.
+    *Ask about how this line might affect others uses of Button B.
+    *m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    */
   }
 
   /**
