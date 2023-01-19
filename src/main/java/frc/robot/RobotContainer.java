@@ -12,6 +12,7 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.PIDTest;
 import frc.robot.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -26,15 +27,16 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   
   /*Note to self: check if trying to compile/deploy code without the drive train hooked up will throw an
-  *error due to new DriveTrain(), ArcadeDrive's requirement of RobotContainer.driveTrain, 
+  *error due to new DriveTrain(), ArcadeDrive's requirement of RobotContainer.driveTrain
+  */
   
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public final static DriveTrain driveTrain = new DriveTrain();
-  public final static PIDTest PIDtest = new PIDTest();
+  public final static PIDTest PIDTestSystem = new PIDTest();
   
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  public final static CommandXboxController m_driverController =
-      new CommandXboxController(OperatorConstants.kDriverControllerPort);
+  public final static XboxController m_driverController =
+      new XboxController(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -42,7 +44,7 @@ public class RobotContainer {
     configureBindings();
     // Default Command(s)
     driveTrain.setDefaultCommand(new ArcadeDrive());
-    PIDTest.setDefaultCommand(new PIDControllerTest());
+    PIDTestSystem.setDefaultCommand(new PIDControllerTest());
   }
 
   /**

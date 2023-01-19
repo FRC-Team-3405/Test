@@ -7,7 +7,7 @@ public class PIDControllerTest extends CommandBase {
   /** Creates a new PIDControllerTest. */
   public PIDControllerTest() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.PIDTest);
+    addRequirements(RobotContainer.PIDTestSystem);
   }
 
   // Called when the command is initially scheduled.
@@ -18,13 +18,13 @@ public class PIDControllerTest extends CommandBase {
   @Override
   public void execute() {
     if (RobotContainer.m_driverController.getAButton()) {
-      RobotContainer.PIDTest.setPosition(1);
+      RobotContainer.PIDTestSystem.setPosition(1.0);
     } else if (RobotContainer.m_driverController.getBButton()) {
-      RobotContainer.PIDTest.setPosition(-1);
+      RobotContainer.PIDTestSystem.setPosition(-1.0);
     } else if (RobotContainer.m_driverController.getXButton()) {
-      RobotContainer.PIDTest.setPosition(0);
+      RobotContainer.PIDTestSystem.setPosition(0.0);
     } else if (RobotContainer.m_driverController.getYButton()) {
-      RobotContainer.PIDTest.setPosition(2);
+      RobotContainer.PIDTestSystem.setPosition(2.0);
     }
   }
 
