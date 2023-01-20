@@ -27,7 +27,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   
   /*Note to self: check if trying to compile/deploy code without the drive train hooked up will throw an
-  *error due to new DriveTrain(), ArcadeDrive's requirement of RobotContainer.driveTrain
+  *error due to new DriveTrain(), ArcadeDrive's requirement of RobotContainer.driveTrain, etc.
   */
   
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
@@ -64,10 +64,7 @@ public class RobotContainer {
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     
-    /*Temporary removal of code that may affect the use of Xbox Button B as used in PIDControllerTest.
-    *Ask about how this line might affect others uses of Button B.
-    *m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-    */
+    // m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
 
   /**
