@@ -24,12 +24,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-  
-  /*Note to self: check if trying to compile/deploy code without the drive train hooked up will throw an
-  *error due to new DriveTrain(), ArcadeDrive's requirement of RobotContainer.driveTrain, etc.
-  */
-  
+  // The robot's subsystems and commands are defined here...  
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public final static DriveTrain driveTrain = new DriveTrain();
   public final static PIDTest PIDTestSystem = new PIDTest();
@@ -63,7 +58,6 @@ public class RobotContainer {
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    
     // m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
 
