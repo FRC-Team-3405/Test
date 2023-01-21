@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class PIDTest extends SubsystemBase {
 
-  CANSparkMax test = new CANSparkMax(0, MotorType.kBrushless);
+  CANSparkMax test = new CANSparkMax(24, MotorType.kBrushless);
   SparkMaxPIDController testPID = test.getPIDController();
 
   /** Creates a new PIDTest. */
