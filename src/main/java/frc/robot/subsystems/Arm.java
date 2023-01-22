@@ -9,6 +9,7 @@ import frc.robot.Constants.CANBusIDs.ArmConstants;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
+import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -26,13 +27,6 @@ public class Arm extends SubsystemBase {
   RelativeEncoder rotatorEncoder = rotator.getEncoder();
   RelativeEncoder extenderEncoder = extender.getEncoder();  
 
-  /* Note to self: the encoder getPosition() method automatically returns in terms
-  *of revolutions, but it can also perform automatic conversion via the 
-  *setPositionConversionFactor() method. The PID controllers when set to position mode
-  *should use revolutions, but the documentation does not say for certain. Would be wise to
-  *test before attaching to robot
-  */
-
   /** Creates a new Arm. */
   public Arm() {
     rotatorFollower.follow(rotator, true);
@@ -45,10 +39,10 @@ public class Arm extends SubsystemBase {
   }
 
   public void setRotatePosition(double position) {
-
+    rotatorPID.setReference(position, ControlType.kPosition);
   }
 
   public void setExtendPosition(double position) {
-
+    extenderPID.setReference(position, ControlType.kPosition);
   }
 }

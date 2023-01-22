@@ -38,7 +38,7 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     // Default Command(s)
-    driveTrain.setDefaultCommand(new ArcadeDrive());
+    // driveTrain.setDefaultCommand(new ArcadeDrive());
     PIDTestSystem.setDefaultCommand(new PIDControllerTest());
   }
 
