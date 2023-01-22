@@ -15,10 +15,10 @@ public class PIDTest extends SubsystemBase {
 
   /** Creates a new PIDTest. */
   public PIDTest() {
-    testPID.setP(0.1);
-    testPID.setI(0.1);
-    testPID.setD(0.1);
-    testPID.setFF(0.1);
+    testPID.setP(0.5);
+    testPID.setI(0);
+    testPID.setD(0);
+    testPID.setFF(0);
     test.burnFlash();
   }
 
