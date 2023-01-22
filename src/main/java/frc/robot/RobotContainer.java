@@ -30,15 +30,15 @@ public class RobotContainer {
   public final static PIDTest PIDTestSystem = new PIDTest();
   
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  public final static XboxController m_driverController =
-      new XboxController(OperatorConstants.kDriverControllerPort);
+  public final static CommandXboxController m_driverController =
+      new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
     // Default Command(s)
-    // driveTrain.setDefaultCommand(new ArcadeDrive());
+    driveTrain.setDefaultCommand(new ArcadeDrive());
     PIDTestSystem.setDefaultCommand(new PIDControllerTest());
   }
 
@@ -58,7 +58,7 @@ public class RobotContainer {
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    // m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
 
   /**
