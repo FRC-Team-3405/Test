@@ -7,11 +7,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class ArcadeDrive extends CommandBase {
-  /** Creates a new ArcadeDrive. */
-  public ArcadeDrive() {
+public class MotorTest extends CommandBase {
+  /** Creates a new MotorTest. */
+  public MotorTest() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.driveTrain);
+    addRequirements(RobotContainer.testSystem);
   }
 
   // Called when the command is initially scheduled.
@@ -21,10 +21,8 @@ public class ArcadeDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double moveSpeed = RobotContainer.m_driverController.getRawAxis(1);
-    double rotateSpeed = RobotContainer.m_driverController.getRawAxis(3);
-    RobotContainer.driveTrain.arcadeDrive(moveSpeed, rotateSpeed);
-    
+    double speed = RobotContainer.m_driverController.getRawAxis(1) * 0.1;
+    RobotContainer.testSystem.setMotorSpeed(speed);
   }
 
   // Called once the command ends or is interrupted.
