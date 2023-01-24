@@ -14,14 +14,14 @@ package frc.robot;
  */
 public final class Constants {
   public static class CANBusIDs {
-    public static class ArmConstants {
+    public static class ArmCANBusIDs {
       public static final int leftRotatorID = 4;
       public static final int rightRotatorID = 5;
       public static final int rightExtenderID = 6;
       public static final int leftExtenderID = 7;
     }
 
-    public static class DriveConstants {
+    public static class DriveCANBusIDs {
       public static final int leftMotorID = 2;
       public static final int rightMotorID = 3;
     }

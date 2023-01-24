@@ -6,13 +6,13 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.CANBusIDs.DriveConstants;
+import frc.robot.Constants.CANBusIDs.DriveCANBusIDs;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class DriveTrain extends SubsystemBase {
-  public final WPI_TalonSRX leftMotor = new WPI_TalonSRX(DriveConstants.leftMotorID);
-  public final WPI_TalonSRX rightMotor = new WPI_TalonSRX(DriveConstants.rightMotorID);
+  public final WPI_TalonSRX leftMotor = new WPI_TalonSRX(DriveCANBusIDs.leftMotorID);
+  public final WPI_TalonSRX rightMotor = new WPI_TalonSRX(DriveCANBusIDs.rightMotorID);
 
   private final DifferentialDrive drive = new DifferentialDrive(leftMotor, rightMotor);
   /** Creates a new DriveTrain. */

@@ -4,7 +4,7 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.Constants.CANBusIDs.ArmConstants;
+import frc.robot.Constants.CANBusIDs.ArmCANBusIDs;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -16,10 +16,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
   // Set up four arm motors over CAN (Neo motor type is brushless)
-  CANSparkMax rotator = new CANSparkMax(ArmConstants.leftRotatorID, MotorType.kBrushless);
-  CANSparkMax rotatorFollower = new CANSparkMax(ArmConstants.rightRotatorID, MotorType.kBrushless);
-  CANSparkMax extender = new CANSparkMax(ArmConstants.leftExtenderID, MotorType.kBrushless);
-  CANSparkMax extenderFollower = new CANSparkMax(ArmConstants.rightExtenderID, MotorType.kBrushless);
+  CANSparkMax rotator = new CANSparkMax(ArmCANBusIDs.leftRotatorID, MotorType.kBrushless);
+  CANSparkMax rotatorFollower = new CANSparkMax(ArmCANBusIDs.rightRotatorID, MotorType.kBrushless);
+  CANSparkMax extender = new CANSparkMax(ArmCANBusIDs.leftExtenderID, MotorType.kBrushless);
+  CANSparkMax extenderFollower = new CANSparkMax(ArmCANBusIDs.rightExtenderID, MotorType.kBrushless);
 
   SparkMaxPIDController rotatorPID = rotator.getPIDController();
   SparkMaxPIDController extenderPID = extender.getPIDController();
