@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -12,7 +13,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Test extends SubsystemBase {
   CANSparkMax motor = new CANSparkMax(24, MotorType.kBrushless);
   /** Creates a new Test. */
-  public Test() {}
+  public Test() {
+    motor.setIdleMode(IdleMode.kBrake);
+  }
 
   @Override
   public void periodic() {
