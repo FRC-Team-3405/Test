@@ -10,10 +10,6 @@ import frc.robot.RobotContainer;
 public class MotorTest extends CommandBase {
   double position = 0;
 
-  double positionOne = 0;
-  double positionTwo = -4;
-  double positionThree = 4;
-
   /** Creates a new MotorTest. */
   public MotorTest() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -22,7 +18,10 @@ public class MotorTest extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    RobotContainer.m_driverController.a().onTrue(new Thingy());
+    RobotContainer.m_driverController.y().onTrue(new OtherThingy());
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
