@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
 public class MotorTest extends CommandBase {
-  double position = 0;
+  double targetPosition = 0;
 
   /** Creates a new MotorTest. */
   public MotorTest() {
@@ -19,15 +19,15 @@ public class MotorTest extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.m_driverController.a().onTrue(new Thingy());
-    RobotContainer.m_driverController.y().onTrue(new OtherThingy());
+    RobotContainer.m_driverController.a().onTrue(new DecrementPosition());
+    RobotContainer.m_driverController.y().onTrue(new IncrementPosition());
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    position += RobotContainer.m_driverController.getLeftY();
-    RobotContainer.testSystem.setPosition(position);
+    targetPosition += RobotContainer.m_driverController.getLeftY();
+    RobotContainer.testSystem.setPosition(targetPosition);
   }
 
   // Called once the command ends or is interrupted.
