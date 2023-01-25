@@ -7,17 +7,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class MotorTest extends CommandBase {
-  double position = 0;
-
-  double positionOne = 0;
-  double positionTwo = -4;
-  double positionThree = 4;
-
-  /** Creates a new MotorTest. */
-  public MotorTest() {
+public class ArmTeleopControl extends CommandBase {
+  /** Creates a new ArmTeleopControl. */
+  public ArmTeleopControl() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.testSystem);
+    addRequirements(RobotContainer.arm);
   }
 
   // Called when the command is initially scheduled.
@@ -26,10 +20,7 @@ public class MotorTest extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    position += RobotContainer.m_driverController.getLeftY();
-    RobotContainer.testSystem.setPosition(position);
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
