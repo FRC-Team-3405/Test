@@ -27,8 +27,13 @@ public class IncrementPosition extends CommandBase {
   @Override
   public void execute() {
     if (MotorTest.targetPosition < ArmPositions.rotateOne) {
-
+      MotorTest.targetPosition = ArmPositions.rotateOne;
+    } else if (MotorTest.targetPosition > ArmPositions.rotateOne && MotorTest.targetPosition < ArmPositions.rotateTwo) {
+      MotorTest.targetPosition = ArmPositions.rotateTwo;
+    } else if (MotorTest.targetPosition > ArmPositions.rotateTwo && MotorTest.targetPosition < ArmPositions.rotateThree) {
+      MotorTest.targetPosition = ArmPositions.rotateThree;
     }
+    finished = true;
   }
 
   // Called once the command ends or is interrupted.
