@@ -7,8 +7,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ArmPositions;
-import frc.robot.Constants;
-import frc.robot.commands.MotorTest;
 
 public class IncrementPosition extends CommandBase {
   public boolean finished = false;
@@ -27,8 +25,15 @@ public class IncrementPosition extends CommandBase {
   @Override
   public void execute() {
     if (MotorTest.targetPosition < ArmPositions.rotateOne) {
-
+      MotorTest.targetPosition = ArmPositions.rotateOne;
+    } else if (MotorTest.targetPosition >= ArmPositions.rotateOne &&
+    MotorTest.targetPosition < ArmPositions.rotateTwo) {
+      MotorTest.targetPosition = ArmPositions.rotateTwo;
+    } else if (MotorTest.targetPosition >= ArmPositions.rotateTwo &&
+    MotorTest.targetPosition < ArmPositions.rotateThree) {
+      MotorTest.targetPosition = ArmPositions.rotateThree;
     }
+    finished = true;
   }
 
   // Called once the command ends or is interrupted.
