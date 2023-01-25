@@ -22,7 +22,10 @@ public class MotorTest extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    RobotContainer.m_driverController.a().onTrue(new Thingy());
+    RobotContainer.m_driverController.y().onTrue(new OtherThingy());
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
