@@ -16,7 +16,6 @@ public class DecrementPosition extends CommandBase {
   public DecrementPosition() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.testSystem);
-
   }
 
   // Called when the command is initially scheduled.
