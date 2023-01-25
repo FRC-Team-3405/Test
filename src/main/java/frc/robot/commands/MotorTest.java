@@ -10,10 +10,6 @@ import frc.robot.RobotContainer;
 public class MotorTest extends CommandBase {
   double position = 0;
 
-  double positionOne = 0;
-  double positionTwo = -4;
-  double positionThree = 4;
-
   /** Creates a new MotorTest. */
   public MotorTest() {
     // Use addRequirements() here to declare subsystem dependencies.

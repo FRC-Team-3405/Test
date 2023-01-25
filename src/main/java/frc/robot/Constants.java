@@ -13,6 +13,12 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static class ArmPositions {
+    public static final double rotateOne = -4;
+    public static final double rotateTwo = 0;
+    public static final double rotateThree = 4;
+  }
+
   public static class CANBusIDs {
     public static class ArmCANBusIDs {
       public static final int leftRotatorID = 4;
