@@ -7,8 +7,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ArmPositions;
-import frc.robot.Constants;
-import frc.robot.commands.MotorTest;
 
 public class IncrementPosition extends CommandBase {
   public boolean finished = false;
