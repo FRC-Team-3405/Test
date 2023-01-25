@@ -26,9 +26,11 @@ public class IncrementPosition extends CommandBase {
   public void execute() {
     if (MotorTest.targetPosition < ArmPositions.rotateOne) {
       MotorTest.targetPosition = ArmPositions.rotateOne;
-    } else if (MotorTest.targetPosition >= ArmPositions.rotateOne && MotorTest.targetPosition < ArmPositions.rotateTwo) {
+    } else if (MotorTest.targetPosition >= ArmPositions.rotateOne &&
+    MotorTest.targetPosition < ArmPositions.rotateTwo) {
       MotorTest.targetPosition = ArmPositions.rotateTwo;
-    } else if (MotorTest.targetPosition >= ArmPositions.rotateTwo && MotorTest.targetPosition < ArmPositions.rotateThree) {
+    } else if (MotorTest.targetPosition >= ArmPositions.rotateTwo &&
+    MotorTest.targetPosition < ArmPositions.rotateThree) {
       MotorTest.targetPosition = ArmPositions.rotateThree;
     }
     finished = true;
