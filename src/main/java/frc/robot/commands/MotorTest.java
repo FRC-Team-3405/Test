@@ -26,7 +26,7 @@ public class MotorTest extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    MotorTest.targetPosition += RobotContainer.m_driverController.getLeftY();
+    MotorTest.targetPosition += RobotContainer.m_driverController.getLeftY() * -0.1;
     RobotContainer.testSystem.setPosition(MotorTest.targetPosition);
   }
 

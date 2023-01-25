@@ -19,7 +19,7 @@ public class Test extends SubsystemBase {
   /** Creates a new Test. */
   public Test() {
     motor.setIdleMode(IdleMode.kCoast);
-    control.setP(0.2);
+    control.setP(0.06);
     control.setI(0);
     control.setD(0);
     control.setFF(0);
