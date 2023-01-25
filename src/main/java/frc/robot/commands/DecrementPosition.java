@@ -5,11 +5,18 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
+import frc.robot.Constants.ArmPositions;
+import frc.robot.Constants;
+import frc.robot.commands.MotorTest;
 
 public class DecrementPosition extends CommandBase {
   /** Creates a new DecrementPosition. */
+  public boolean finished = false; 
   public DecrementPosition() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.testSystem);
+
   }
 
   // Called when the command is initially scheduled.
@@ -18,7 +25,18 @@ public class DecrementPosition extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    if (MotorTest.targetPosition > ArmPositions.rotateThree) {
+      MotorTest.targetPosition = ArmPositions.rotateThree;
+    } else if (MotorTest.targetPosition <= ArmPositions.rotateThree 
+    && MotorTest.targetPosition > ArmPositions.rotateTwo) {
+      MotorTest.targetPosition = ArmPositions.rotateTwo;
+    } else if (MotorTest.targetPosition <= ArmPositions.rotateTwo 
+    && MotorTest.targetPosition > ArmPositions.rotateOne) {
+      MotorTest.targetPosition = ArmPositions.rotateOne;
+    }
+    finished = true;
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -27,6 +45,6 @@ public class DecrementPosition extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finished;
   }
 }
