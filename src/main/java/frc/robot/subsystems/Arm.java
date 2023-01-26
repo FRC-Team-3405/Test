@@ -15,6 +15,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
@@ -50,5 +51,17 @@ public class Arm extends SubsystemBase {
 
   public void setExtendPosition(double position) {
     extenderPID.setReference(position, ControlType.kPosition);
+  }
+
+  public void closeClaw() {
+    claw.set(Value.kForward);
+  }
+
+  public void openClaw() {
+    claw.set(Value.kReverse);
+  }
+
+  public void toggleClaw() {
+    claw.toggle();
   }
 }
