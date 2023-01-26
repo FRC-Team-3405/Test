@@ -19,6 +19,13 @@ public final class Constants {
     public static final double rotateThree = 4;
   }
 
+  public static class PneumaticsChannels {
+    public static final int highGear = 0;
+    public static final int lowGear = 1;
+    public static final int clawClose = 2;
+    public static final int clawOpen = 3;
+  }
+
   public static class CANBusIDs {
     public static class ArmCANBusIDs {
       public static final int leftRotatorID = 4;

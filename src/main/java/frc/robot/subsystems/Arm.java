@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.Constants.PneumaticsChannels;
 import frc.robot.Constants.CANBusIDs.ArmCANBusIDs;
 
 import com.revrobotics.CANSparkMax;
@@ -12,6 +13,8 @@ import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
@@ -20,6 +23,9 @@ public class Arm extends SubsystemBase {
   CANSparkMax rotatorFollower = new CANSparkMax(ArmCANBusIDs.rightRotatorID, MotorType.kBrushless);
   CANSparkMax extender = new CANSparkMax(ArmCANBusIDs.leftExtenderID, MotorType.kBrushless);
   CANSparkMax extenderFollower = new CANSparkMax(ArmCANBusIDs.rightExtenderID, MotorType.kBrushless);
+
+  // Forward channel closes claw, reverse channel opens claw
+  DoubleSolenoid claw =  new DoubleSolenoid(PneumaticsModuleType.REVPH, PneumaticsChannels.clawClose, PneumaticsChannels.clawOpen);
 
   SparkMaxPIDController rotatorPID = rotator.getPIDController();
   SparkMaxPIDController extenderPID = extender.getPIDController();
