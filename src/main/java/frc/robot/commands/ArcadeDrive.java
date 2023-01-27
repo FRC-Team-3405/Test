@@ -24,7 +24,6 @@ public class ArcadeDrive extends CommandBase {
     double moveSpeed = RobotContainer.m_driverController.getRawAxis(1);
     double rotateSpeed = RobotContainer.m_driverController.getRawAxis(3);
     RobotContainer.driveTrain.arcadeDrive(moveSpeed, rotateSpeed);
-    
   }
 
   // Called once the command ends or is interrupted.
