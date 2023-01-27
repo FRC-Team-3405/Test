@@ -13,6 +13,7 @@ import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -28,11 +29,17 @@ public class Arm extends SubsystemBase {
   // Forward channel closes claw, reverse channel opens claw
   DoubleSolenoid claw =  new DoubleSolenoid(PneumaticsModuleType.REVPH, PneumaticsChannels.clawClose, PneumaticsChannels.clawOpen);
 
+  // PID controller to control the rotation and extension of the arm
   SparkMaxPIDController rotatorPID = rotator.getPIDController();
   SparkMaxPIDController extenderPID = extender.getPIDController();
 
+  // Encoders to output current rotation and extension of the arm
   RelativeEncoder rotatorEncoder = rotator.getEncoder();
-  RelativeEncoder extenderEncoder = extender.getEncoder();  
+  RelativeEncoder extenderEncoder = extender.getEncoder();
+  
+  // Break beam sensors to automatically close the claw
+  public DigitalInput breakBeamOne = new DigitalInput(0);
+  public DigitalInput breakBeamTwo = new DigitalInput(1);
 
   /** Creates a new Arm. */
   public Arm() {
