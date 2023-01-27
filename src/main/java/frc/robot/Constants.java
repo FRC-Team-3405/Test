@@ -13,10 +13,19 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static class TestArmPositions {
+    public static final double rotateOne = -4;
+    public static final double rotateTwo = 0;
+    public static final double rotateThree = 4;
+  }
+
   public static class ArmPositions {
     public static final double rotateOne = -4;
     public static final double rotateTwo = 0;
     public static final double rotateThree = 4;
+    public static final double extendOne = 0;
+    public static final double extendTwo = 4;
+    public static final double extendThree = 8;
   }
 
   public static class PneumaticsChannels {
