@@ -3,11 +3,14 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands;
-
-import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
 public class ArmTeleopControl extends CommandBase {
+  static double rotateTarget = 0;
+  static double extendTarget = 0;
+
   /** Creates a new ArmTeleopControl. */
   public ArmTeleopControl() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -24,6 +27,12 @@ public class ArmTeleopControl extends CommandBase {
     if (!RobotContainer.arm.breakBeamOne.get() && !RobotContainer.arm.breakBeamTwo.get()) {
       RobotContainer.arm.closeClaw();
     }
+    
+    rotateTarget += RobotContainer.m_driverController.getLeftY();
+    extendTarget += RobotContainer.m_driverController.getRightY();
+
+    RobotContainer.arm.setRotatePosition(rotateTarget);
+    RobotContainer.arm.setExtendPosition(extendTarget);
   }
 
   // Called once the command ends or is interrupted.
