@@ -59,12 +59,6 @@ public class IncrementPosition extends CommandBase {
       } else if (ArmTeleopControl.extendTarget >= ArmPositions.extendThree 
       && ArmTeleopControl.extendTarget < ArmPositions.extendFour) {
         ArmTeleopControl.extendTarget = ArmPositions.extendFour;
-      } else if (MotorTest.targetPosition >= ArmPositions.extendFour 
-      && MotorTest.targetPosition < ArmPositions.extendFive) {
-        ArmTeleopControl.extendTarget = ArmPositions.extendFive;
-      } else if (MotorTest.targetPosition >= ArmPositions.extendFive 
-      && MotorTest.targetPosition < ArmPositions.extendSix) {
-        ArmTeleopControl.extendTarget = ArmPositions.extendSix;
       }
     }
     finished = true;
