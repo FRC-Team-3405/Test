@@ -40,8 +40,8 @@ public class ArmTeleopControl extends CommandBase {
       RobotContainer.arm.closeClaw();
     }
     
-    rotateTarget += RobotContainer.m_armController.getLeftY();
-    extendTarget += RobotContainer.m_armController.getRightY();
+    rotateTarget += RobotContainer.m_armController.getLeftY() * -0.1;
+    extendTarget += RobotContainer.m_armController.getRightY() * -0.1;
     RobotContainer.arm.setRotatePosition(rotateTarget);
     RobotContainer.arm.setExtendPosition(extendTarget);
   }
