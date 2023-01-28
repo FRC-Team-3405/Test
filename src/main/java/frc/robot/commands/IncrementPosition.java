@@ -38,24 +38,33 @@ public class IncrementPosition extends CommandBase {
         MotorTest.targetPosition = TestArmPositions.rotateThree;
       }
     } else if (component.equals("rotate")) {
-      if (MotorTest.targetPosition < ArmPositions.rotateOne) {
-        MotorTest.targetPosition = ArmPositions.rotateOne;
-      } else if (MotorTest.targetPosition >= ArmPositions.rotateOne &&
-      MotorTest.targetPosition < ArmPositions.rotateTwo) {
-        MotorTest.targetPosition = ArmPositions.rotateTwo;
-      } else if (MotorTest.targetPosition >= ArmPositions.rotateTwo &&
-      MotorTest.targetPosition < ArmPositions.rotateThree) {
-        MotorTest.targetPosition = ArmPositions.rotateThree;
+      if (ArmTeleopControl.rotateTarget < ArmPositions.rotateOne) {
+        ArmTeleopControl.rotateTarget = ArmPositions.rotateOne;
+      } else if (ArmTeleopControl.rotateTarget >= ArmPositions.rotateTwo &&
+      ArmTeleopControl.rotateTarget < ArmPositions.rotateTwo) {
+        ArmTeleopControl.rotateTarget = ArmPositions.rotateThree;
+      } else if (MotorTest.targetPosition >= ArmPositions.rotateThree &&
+      ArmTeleopControl.rotateTarget < ArmPositions.rotateFour) {
+        ArmTeleopControl.rotateTarget = ArmPositions.rotateFour;
       }
     } else if (component.equals("extend")) {
-      if (MotorTest.targetPosition < ArmPositions.extendOne) {
-        MotorTest.targetPosition = ArmPositions.extendOne;
-      } else if (MotorTest.targetPosition >= ArmPositions.extendOne &&
-      MotorTest.targetPosition < ArmPositions.extendTwo) {
-        MotorTest.targetPosition = ArmPositions.extendTwo;
-      } else if (MotorTest.targetPosition >= ArmPositions.extendTwo &&
-      MotorTest.targetPosition < ArmPositions.extendThree) {
-        MotorTest.targetPosition = ArmPositions.extendThree;
+      if (ArmTeleopControl.extendTarget < ArmPositions.extendOne) {
+        ArmTeleopControl.extendTarget = ArmPositions.extendOne;
+      } else if (ArmTeleopControl.extendTarget >= ArmPositions.extendOne &&
+      ArmTeleopControl.extendTarget < ArmPositions.extendTwo) {
+        ArmTeleopControl.extendTarget = ArmPositions.extendTwo;
+      } else if (ArmTeleopControl.extendTarget >= ArmPositions.extendTwo &&
+      ArmTeleopControl.extendTarget < ArmPositions.extendThree) {
+        ArmTeleopControl.extendTarget = ArmPositions.extendThree;
+      } else if (ArmTeleopControl.extendTarget >= ArmPositions.extendThree 
+      && ArmTeleopControl.extendTarget < ArmPositions.extendFour) {
+        ArmTeleopControl.extendTarget = ArmPositions.extendFour;
+      } else if (MotorTest.targetPosition >= ArmPositions.extendFour 
+      && MotorTest.targetPosition < ArmPositions.extendFive) {
+        ArmTeleopControl.extendTarget = ArmPositions.extendFive;
+      } else if (MotorTest.targetPosition >= ArmPositions.extendFive 
+      && MotorTest.targetPosition < ArmPositions.extendSix) {
+        ArmTeleopControl.extendTarget = ArmPositions.extendSix;
       }
     }
     finished = true;
