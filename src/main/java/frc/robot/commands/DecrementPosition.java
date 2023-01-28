@@ -52,15 +52,9 @@ public class DecrementPosition extends CommandBase {
         ArmTeleopControl.rotateTarget = ArmPositions.rotateOne;
       }
     } else if (component.equals("extend")) {
-      if (ArmTeleopControl.extendTarget > ArmPositions.extendSix) {
-        ArmTeleopControl.extendTarget = ArmPositions.extendSix;
-      } else if (ArmTeleopControl.extendTarget <= ArmPositions.extendSix 
-      && ArmTeleopControl.extendTarget > ArmPositions.extendFive) {
-        ArmTeleopControl.extendTarget = ArmPositions.extendFive;
-      } else if (ArmTeleopControl.extendTarget <= ArmPositions.extendFive 
-      && ArmTeleopControl.extendTarget > ArmPositions.extendFour) {
+      if (ArmTeleopControl.extendTarget > ArmPositions.extendFour) {
         ArmTeleopControl.extendTarget = ArmPositions.extendFour;
-      } else if (ArmTeleopControl.extendTarget <= ArmPositions.extendFour 
+      } else if (ArmTeleopControl.extendTarget <= ArmPositions.extendFour
       && ArmTeleopControl.extendTarget > ArmPositions.extendThree) {
         ArmTeleopControl.extendTarget = ArmPositions.extendThree;
       } else if (MotorTest.targetPosition <= ArmPositions.extendThree 
