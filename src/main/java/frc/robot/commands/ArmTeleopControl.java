@@ -5,7 +5,10 @@
 package frc.robot.commands;
 import frc.robot.RobotContainer;
 
+import java.util.function.BooleanSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class ArmTeleopControl extends CommandBase {
   /*
@@ -31,6 +34,11 @@ public class ArmTeleopControl extends CommandBase {
     RobotContainer.m_armController.y().onTrue(new IncrementPosition("rotate"));
     RobotContainer.m_armController.x().onTrue(new DecrementPosition("extend"));
     RobotContainer.m_armController.b().onTrue(new IncrementPosition("extend"));
+    BooleanSupplier breakBeamsState = () -> {
+      return (!RobotContainer.arm.breakBeamOne.get() && !RobotContainer.arm.breakBeamTwo.get());
+    };
+    Trigger breakBeams = new Trigger(breakBeamsState);
+    breakBeams.onTrue(new ClawControl("close"));
   }
 
   // Called every time the scheduler runs while the command is scheduled.
