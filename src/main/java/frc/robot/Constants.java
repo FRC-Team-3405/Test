@@ -26,10 +26,14 @@ public final class Constants {
      */
     public static final double rotateOne = -4;
     public static final double rotateTwo = 0;
-    public static final double rotateThree = 4;
+    public static final double rotateThree = 2;
+    public static final double rotateFour = 4;
     public static final double extendOne = 0;
-    public static final double extendTwo = 4;
-    public static final double extendThree = 8;
+    public static final double extendTwo = 0.67;
+    public static final double extendThree = 1.33;
+    public static final double extendFour = 2.67;
+    public static final double extendFive = 3.33;
+    public static final double extendSix = 4;
   }
 
   public static class PneumaticsChannels {
