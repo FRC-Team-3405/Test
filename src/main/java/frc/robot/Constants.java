@@ -20,6 +20,10 @@ public final class Constants {
   }
 
   public static class ArmPositions {
+    /*
+     * Note: it is unclear which way is positive on the motors.
+     * It would be wise to test this before attaching components.
+     */
     public static final double rotateOne = -4;
     public static final double rotateTwo = 0;
     public static final double rotateThree = 4;
@@ -51,5 +55,6 @@ public final class Constants {
   
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+    public static final int kArmControllerPort = 1;
   }
 }
