@@ -35,11 +35,7 @@ public class ArmTeleopControl extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    if (!RobotContainer.arm.breakBeamOne.get() && !RobotContainer.arm.breakBeamTwo.get()) {
-      RobotContainer.arm.closeClaw();
-    }
-    
+  public void execute() {    
     rotateTarget += RobotContainer.m_armController.getLeftY() * -0.1;
     extendTarget += RobotContainer.m_armController.getRightY() * -0.1;
     RobotContainer.arm.setRotatePosition(rotateTarget);
