@@ -39,8 +39,6 @@ public final class Constants {
     public static final double extendTwo = 0.67;
     public static final double extendThree = 1.33;
     public static final double extendFour = 2.67;
-    public static final double extendFive = 3.33;
-    public static final double extendSix = 4;
   }
 
   public static class PneumaticsChannels {
