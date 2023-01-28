@@ -9,11 +9,14 @@ import frc.robot.RobotContainer;
 import frc.robot.Constants.TestArmPositions;
 
 public class DecrementPosition extends CommandBase {
-  /** Creates a new DecrementPosition. */
-  public boolean finished = false; 
-  public DecrementPosition() {
+  String component;
+  public boolean finished = false;
+
+  /** Creates a new DecrementPosition. */ 
+  public DecrementPosition(String comp) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.testSystem);
+    component = comp;
   }
 
   // Called when the command is initially scheduled.
@@ -23,14 +26,20 @@ public class DecrementPosition extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (MotorTest.targetPosition > TestArmPositions.rotateThree) {
-      MotorTest.targetPosition = TestArmPositions.rotateThree;
-    } else if (MotorTest.targetPosition <= TestArmPositions.rotateThree 
-    && MotorTest.targetPosition > TestArmPositions.rotateTwo) {
-      MotorTest.targetPosition = TestArmPositions.rotateTwo;
-    } else if (MotorTest.targetPosition <= TestArmPositions.rotateTwo 
-    && MotorTest.targetPosition > TestArmPositions.rotateOne) {
-      MotorTest.targetPosition = TestArmPositions.rotateOne;
+    if (component.equals("test")) {
+      if (MotorTest.targetPosition > TestArmPositions.rotateThree) {
+        MotorTest.targetPosition = TestArmPositions.rotateThree;
+      } else if (MotorTest.targetPosition <= TestArmPositions.rotateThree 
+      && MotorTest.targetPosition > TestArmPositions.rotateTwo) {
+        MotorTest.targetPosition = TestArmPositions.rotateTwo;
+      } else if (MotorTest.targetPosition <= TestArmPositions.rotateTwo 
+      && MotorTest.targetPosition > TestArmPositions.rotateOne) {
+        MotorTest.targetPosition = TestArmPositions.rotateOne;
+      }
+    } else if (component.equals("rotate")) {
+
+    } else if (component.equals("extend")) {
+
     }
     finished = true;
   }

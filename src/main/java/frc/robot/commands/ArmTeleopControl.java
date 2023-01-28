@@ -8,6 +8,12 @@ import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class ArmTeleopControl extends CommandBase {
+  /*
+   * Note: it is not always clear where the motor's zero point will be,
+   * so it would be wise to determine that before permanently attaching
+   * any components. Current code will make the motors go back to the zero
+   * position automatically when the robot is enabled.
+   */
   static double rotateTarget = 0;
   static double extendTarget = 0;
 
@@ -19,7 +25,13 @@ public class ArmTeleopControl extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    // Parameter "comp" determines whether the rotation or the extension of the arm will be affected
+    RobotContainer.m_driverController.a().onTrue(new DecrementPosition("rotate"));
+    RobotContainer.m_driverController.y().onTrue(new IncrementPosition("rotate"));
+    RobotContainer.m_driverController.x().onTrue(new DecrementPosition("extend"));
+    RobotContainer.m_driverController.b().onTrue(new IncrementPosition("extend"));
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
