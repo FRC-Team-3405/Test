@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ArmPositions;
 
 import java.util.function.BooleanSupplier;
 
@@ -17,8 +18,8 @@ public class ArmTeleopControl extends CommandBase {
    * any components. Current code will make the motors go back to the zero
    * position automatically when the robot is enabled.
    */
-  static double rotateTarget = 0;
-  static double extendTarget = 0;
+  static double rotateTarget = ArmPositions.defaultRotate;
+  static double extendTarget = ArmPositions.defaultExtend;
 
   /** Creates a new ArmTeleopControl. */
   public ArmTeleopControl() {
@@ -35,6 +36,7 @@ public class ArmTeleopControl extends CommandBase {
     RobotContainer.m_armController.x().onTrue(new DecrementPosition("extend"));
     RobotContainer.m_armController.b().onTrue(new IncrementPosition("extend"));
     RobotContainer.m_armController.rightBumper().onTrue(new ClawControl("toggle"));
+    RobotContainer.m_armController.leftBumper().onTrue(new ArmReset());
     BooleanSupplier breakBeamsState = () -> {
       return (!RobotContainer.arm.breakBeamOne.get() && !RobotContainer.arm.breakBeamTwo.get());
     };

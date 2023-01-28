@@ -23,11 +23,18 @@ public final class Constants {
     /*
      * Note: it is unclear which way is positive on the motors.
      * It would be wise to test this before attaching components.
+     * 
+     * Another note: defaultRotate and defaultExtend are the positions
+     * the arm will go to automatically when started up and the positions
+     * it will go straight to when ArmReset is called.
      */
+    public static final double defaultRotate = 0;
     public static final double rotateOne = -4;
     public static final double rotateTwo = 0;
     public static final double rotateThree = 2;
     public static final double rotateFour = 4;
+
+    public static final double defaultExtend = 0;
     public static final double extendOne = 0;
     public static final double extendTwo = 0.67;
     public static final double extendThree = 1.33;
