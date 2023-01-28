@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ArmPositions;
 import frc.robot.Constants.TestArmPositions;
 
 public class IncrementPosition extends CommandBase {
@@ -37,9 +38,25 @@ public class IncrementPosition extends CommandBase {
         MotorTest.targetPosition = TestArmPositions.rotateThree;
       }
     } else if (component.equals("rotate")) {
-
+      if (MotorTest.targetPosition < ArmPositions.rotateOne) {
+        MotorTest.targetPosition = ArmPositions.rotateOne;
+      } else if (MotorTest.targetPosition >= ArmPositions.rotateOne &&
+      MotorTest.targetPosition < ArmPositions.rotateTwo) {
+        MotorTest.targetPosition = ArmPositions.rotateTwo;
+      } else if (MotorTest.targetPosition >= ArmPositions.rotateTwo &&
+      MotorTest.targetPosition < ArmPositions.rotateThree) {
+        MotorTest.targetPosition = ArmPositions.rotateThree;
+      }
     } else if (component.equals("extend")) {
-      
+      if (MotorTest.targetPosition < ArmPositions.extendOne) {
+        MotorTest.targetPosition = ArmPositions.extendOne;
+      } else if (MotorTest.targetPosition >= ArmPositions.extendOne &&
+      MotorTest.targetPosition < ArmPositions.extendTwo) {
+        MotorTest.targetPosition = ArmPositions.extendTwo;
+      } else if (MotorTest.targetPosition >= ArmPositions.extendTwo &&
+      MotorTest.targetPosition < ArmPositions.extendThree) {
+        MotorTest.targetPosition = ArmPositions.extendThree;
+      }
     }
     finished = true;
   }
