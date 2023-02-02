@@ -14,11 +14,11 @@ public class DecrementPosition extends CommandBase {
   public boolean finished = false;
 
   /** Creates a new DecrementPosition. */ 
-  public DecrementPosition(String comp) {
+  public DecrementPosition(String component) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.testSystem);
     addRequirements(RobotContainer.arm);
-    component = comp;
+    this.component = component;
   }
 
   // Called when the command is initially scheduled.

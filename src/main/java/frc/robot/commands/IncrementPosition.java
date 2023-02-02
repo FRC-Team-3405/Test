@@ -14,10 +14,10 @@ public class IncrementPosition extends CommandBase {
   public boolean finished = false;
 
   /** Creates a new IncrementPosition. */
-  public IncrementPosition(String comp) {
+  public IncrementPosition(String component) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.testSystem);
-    component = comp;
+    this.component = component;
   }
 
   // Called when the command is initially scheduled.
