@@ -52,7 +52,8 @@ public class Arm extends SubsystemBase {
   public Arm() {
     // Make a NetworkTable
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    NetworkTable table = inst.getTable( "ArmEncoders");
+    NetworkTable table = inst.getTable( "Arm Encoders");
+    
     rotation = table.getEntry("Rotation");
     extension = table.getEntry("Extension");
 
