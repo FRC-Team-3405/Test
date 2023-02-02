@@ -49,6 +49,11 @@ public class Arm extends SubsystemBase {
 
   /** Creates a new Arm. */
   public Arm() {
+    // Make a NetworkTable
+
+    rotation = table.getEntry("Rotation");
+    extension = table.getEntry("Extension");
+
     rotatorFollower.follow(rotator, true);
     extenderFollower.follow(extender, true);
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
