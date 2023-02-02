@@ -33,8 +33,8 @@ public class ArmTeleopControl extends CommandBase {
     // Parameter "comp" determines whether the rotation or the extension of the arm will be affected
     RobotContainer.m_armController.a().onTrue(new DecrementPosition("rotate"));
     RobotContainer.m_armController.y().onTrue(new IncrementPosition("rotate"));
-    RobotContainer.m_armController.x().onTrue(new DecrementPosition("extend"));
-    RobotContainer.m_armController.b().onTrue(new IncrementPosition("extend"));
+    RobotContainer.m_armController.b().onTrue(new DecrementPosition("extend"));
+    RobotContainer.m_armController.x().onTrue(new IncrementPosition("extend"));
     RobotContainer.m_armController.rightBumper().onTrue(new ClawControl("toggle"));
     RobotContainer.m_armController.leftBumper().onTrue(new ArmReset());
     BooleanSupplier breakBeamsState = () -> {
