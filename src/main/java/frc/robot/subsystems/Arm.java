@@ -13,6 +13,7 @@ import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -50,13 +51,14 @@ public class Arm extends SubsystemBase {
   /** Creates a new Arm. */
   public Arm() {
     // Make a NetworkTable
-
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    NetworkTable table = inst.getTable( "ArmEncoders");
     rotation = table.getEntry("Rotation");
     extension = table.getEntry("Extension");
 
     rotatorFollower.follow(rotator, true);
     extenderFollower.follow(extender, true);
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    
   }
 
   @Override
