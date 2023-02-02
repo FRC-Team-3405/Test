@@ -14,6 +14,7 @@ import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
@@ -50,6 +51,7 @@ public class Arm extends SubsystemBase {
   public Arm() {
     rotatorFollower.follow(rotator, true);
     extenderFollower.follow(extender, true);
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
   }
 
   @Override
