@@ -32,7 +32,7 @@ public class ArmTeleopControl extends CommandBase {
 
     RobotContainer.m_armController.rightBumper().onTrue(new ClawControl("toggle"));
     RobotContainer.m_armController.leftBumper().onTrue(new ArmReset());
-    
+
     BooleanSupplier breakBeamsState = () -> {
       return (!RobotContainer.arm.breakBeamOne.get() && !RobotContainer.arm.breakBeamTwo.get());
     };
