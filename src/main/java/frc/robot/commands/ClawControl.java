@@ -12,9 +12,9 @@ public class ClawControl extends CommandBase {
   boolean finished = false;
 
   /** Creates a new ClawControl. */
-  public ClawControl(String act) {
+  public ClawControl(String action) {
     // Use addRequirements() here to declare subsystem dependencies.
-    action = act;
+    this.action = action;
   }
 
   // Called when the command is initially scheduled.
