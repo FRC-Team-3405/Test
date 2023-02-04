@@ -11,6 +11,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.ControlType;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.networktables.NetworkTable;
@@ -23,7 +24,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
-  // For the dashboard
+  // For the Shuffleboard
   private NetworkTableEntry extension;
   private NetworkTableEntry rotation;
 
@@ -50,16 +51,27 @@ public class Arm extends SubsystemBase {
 
   /** Creates a new Arm. */
   public Arm() {
+    extender.setIdleMode(IdleMode.kCoast);
+    extenderFollower.setIdleMode(IdleMode.kCoast);
+    extenderFollower.follow(extender, true);
+    extenderPID.setP(0.06);
+    extenderPID.setI(0.0);
+    extenderPID.setD(0.08);
+    extenderPID.setFF(0.0);
+
+    rotator.setIdleMode(IdleMode.kCoast);
+    rotatorFollower.setIdleMode(IdleMode.kCoast);
+    rotatorFollower.follow(rotator, true);
+    rotatorPID.setP(0.0);
+    rotatorPID.setI(0.0);
+    rotatorPID.setD(0.0);
+    rotatorPID.setFF(0.0);
+
     // Make a NetworkTable
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable( "Arm Encoders");
-    
     rotation = table.getEntry("Rotation");
     extension = table.getEntry("Extension");
-
-    rotatorFollower.follow(rotator, true);
-    extenderFollower.follow(extender, true);
-    
   }
 
   @Override
