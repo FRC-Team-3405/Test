@@ -13,21 +13,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static class TestArmPositions {
-    public static final double rotateOne = -4;
-    public static final double rotateTwo = 0;
-    public static final double rotateThree = 4;
-  }
-
   public static class ArmPositions {
-    /*
-     * Note: it is unclear which way is positive on the motors.
-     * It would be wise to test this before attaching components.
-     * 
-     * Another note: defaultRotate and defaultExtend are the positions
-     * the arm will go to automatically when started up and the positions
-     * it will go straight to when ArmReset is called.
-     */
     public static final double defaultRotate = 0;
     public static final double rotateOne = -4;
     public static final double rotateTwo = 0;

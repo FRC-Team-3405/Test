@@ -7,7 +7,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ArmPositions;
-import frc.robot.Constants.TestArmPositions;
 
 public class IncrementPosition extends CommandBase {
   String component;
@@ -16,7 +15,7 @@ public class IncrementPosition extends CommandBase {
   /** Creates a new IncrementPosition. */
   public IncrementPosition(String component) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.testSystem);
+    addRequirements(RobotContainer.arm);
     this.component = component;
   }
 
@@ -27,23 +26,13 @@ public class IncrementPosition extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (component.equals("test")) {
-      if (MotorTest.targetPosition < TestArmPositions.rotateOne) {
-        MotorTest.targetPosition = TestArmPositions.rotateOne;
-      } else if (MotorTest.targetPosition >= TestArmPositions.rotateOne &&
-      MotorTest.targetPosition < TestArmPositions.rotateTwo) {
-        MotorTest.targetPosition = TestArmPositions.rotateTwo;
-      } else if (MotorTest.targetPosition >= TestArmPositions.rotateTwo &&
-      MotorTest.targetPosition < TestArmPositions.rotateThree) {
-        MotorTest.targetPosition = TestArmPositions.rotateThree;
-      }
-    } else if (component.equals("rotate")) {
+    if (component.equals("rotate")) {
       if (ArmTeleopControl.rotateTarget < ArmPositions.rotateOne) {
         ArmTeleopControl.rotateTarget = ArmPositions.rotateOne;
       } else if (ArmTeleopControl.rotateTarget >= ArmPositions.rotateTwo &&
       ArmTeleopControl.rotateTarget < ArmPositions.rotateTwo) {
         ArmTeleopControl.rotateTarget = ArmPositions.rotateThree;
-      } else if (MotorTest.targetPosition >= ArmPositions.rotateThree &&
+      } else if (ArmTeleopControl.rotateTarget >= ArmPositions.rotateThree &&
       ArmTeleopControl.rotateTarget < ArmPositions.rotateFour) {
         ArmTeleopControl.rotateTarget = ArmPositions.rotateFour;
       }

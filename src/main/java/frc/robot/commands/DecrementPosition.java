@@ -7,7 +7,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ArmPositions;
-import frc.robot.Constants.TestArmPositions;
 
 public class DecrementPosition extends CommandBase {
   String component;
@@ -16,7 +15,6 @@ public class DecrementPosition extends CommandBase {
   /** Creates a new DecrementPosition. */ 
   public DecrementPosition(String component) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.testSystem);
     addRequirements(RobotContainer.arm);
     this.component = component;
   }
@@ -28,17 +26,7 @@ public class DecrementPosition extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (component.equals("test")) {
-      if (MotorTest.targetPosition > TestArmPositions.rotateThree) {
-        MotorTest.targetPosition = TestArmPositions.rotateThree;
-      } else if (MotorTest.targetPosition <= TestArmPositions.rotateThree 
-      && MotorTest.targetPosition > TestArmPositions.rotateTwo) {
-        MotorTest.targetPosition = TestArmPositions.rotateTwo;
-      } else if (MotorTest.targetPosition <= TestArmPositions.rotateTwo 
-      && MotorTest.targetPosition > TestArmPositions.rotateOne) {
-        MotorTest.targetPosition = TestArmPositions.rotateOne;
-      }
-    } else if (component.equals("rotate")) {
+    if (component.equals("rotate")) {
       if (ArmTeleopControl.rotateTarget > ArmPositions.rotateFour) {
         ArmTeleopControl.rotateTarget = ArmPositions.rotateFour;
       } else if (ArmTeleopControl.rotateTarget <= ArmPositions.rotateFour
