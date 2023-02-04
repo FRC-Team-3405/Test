@@ -5,8 +5,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
+import frc.robot.Constants.ArmPositions;
 
 public class ArmReset extends CommandBase {
+  public boolean finished = false;
+
   /** Creates a new ArmReset. */
   public ArmReset() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -20,6 +24,9 @@ public class ArmReset extends CommandBase {
   @Override
   public void execute() {
     // Change this to whatever we want the reset position to be
+    RobotContainer.arm.setRotatePosition(ArmPositions.defaultRotate);
+    RobotContainer.arm.setExtendPosition(ArmPositions.defaultExtend);
+    finished = true;
   }
 
   // Called once the command ends or is interrupted.
@@ -29,6 +36,6 @@ public class ArmReset extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finished;
   }
 }
