@@ -34,8 +34,8 @@ public class Arm extends SubsystemBase {
   CANSparkMax extender = new CANSparkMax(ArmCANBusIDs.leftExtenderID, MotorType.kBrushless);
   CANSparkMax extenderFollower = new CANSparkMax(ArmCANBusIDs.rightExtenderID, MotorType.kBrushless);
 
-  // Forward channel closes claw, reverse channel opens claw
-  DoubleSolenoid claw =  new DoubleSolenoid(PneumaticsModuleType.REVPH, PneumaticsChannels.clawClose, PneumaticsChannels.clawOpen);
+  // Forward channel opens claw, reverse channel closes claw
+  DoubleSolenoid claw =  new DoubleSolenoid(PneumaticsModuleType.REVPH, PneumaticsChannels.clawOpen, PneumaticsChannels.clawClose);
 
   // PID controller to control the rotation and extension of the arm
   SparkMaxPIDController rotatorPID = rotator.getPIDController();
@@ -90,11 +90,11 @@ public class Arm extends SubsystemBase {
   }
 
   public void closeClaw() {
-    claw.set(Value.kForward);
+    claw.set(Value.kReverse);
   }
 
   public void openClaw() {
-    claw.set(Value.kReverse);
+    claw.set(Value.kForward);
   }
 
   public void toggleClaw() {
