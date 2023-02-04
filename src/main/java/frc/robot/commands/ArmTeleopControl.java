@@ -27,8 +27,8 @@ public class ArmTeleopControl extends CommandBase {
     // Parameter "component" determines whether the rotation or the extension of the arm will be affected
     RobotContainer.m_armController.a().onTrue(new DecrementPosition("rotate"));
     RobotContainer.m_armController.y().onTrue(new IncrementPosition("rotate"));
-    RobotContainer.m_armController.b().onTrue(new DecrementPosition("extend"));
-    RobotContainer.m_armController.x().onTrue(new IncrementPosition("extend"));
+    RobotContainer.m_armController.x().onTrue(new DecrementPosition("extend"));
+    RobotContainer.m_armController.b().onTrue(new IncrementPosition("extend"));
 
     RobotContainer.m_armController.rightBumper().onTrue(new ClawControl("toggle"));
     RobotContainer.m_armController.leftBumper().onTrue(new ArmReset());
@@ -47,7 +47,8 @@ public class ArmTeleopControl extends CommandBase {
     ArmTeleopControl.extendTarget += RobotContainer.m_armController.getRightY() * -0.1;
     RobotContainer.arm.setRotatePosition(ArmTeleopControl.rotateTarget);
     RobotContainer.arm.setExtendPosition(ArmTeleopControl.extendTarget);
-    System.out.println("Current arm extend target: " + ArmTeleopControl.extendTarget);
+    System.out.println("Rotate target: " + ArmTeleopControl.rotateTarget);
+    System.out.println("Extend target: " + ArmTeleopControl.extendTarget);
   }
 
   // Called once the command ends or is interrupted.

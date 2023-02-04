@@ -62,9 +62,9 @@ public class Arm extends SubsystemBase {
     rotator.setIdleMode(IdleMode.kCoast);
     rotatorFollower.setIdleMode(IdleMode.kCoast);
     rotatorFollower.follow(rotator, true);
-    rotatorPID.setP(0.0);
+    rotatorPID.setP(0.06);
     rotatorPID.setI(0.0);
-    rotatorPID.setD(0.0);
+    rotatorPID.setD(0.08);
     rotatorPID.setFF(0.0);
 
     // Make a NetworkTable
