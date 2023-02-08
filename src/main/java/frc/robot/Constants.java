@@ -15,16 +15,16 @@ package frc.robot;
 public final class Constants {
   public static class ArmPositions {
     public static final double defaultRotate = 0;
-    public static final double rotateOne = -4;
-    public static final double rotateTwo = 0;
-    public static final double rotateThree = 2;
-    public static final double rotateFour = 4;
+    public static final double rotateOne = 0;
+    public static final double rotateTwo = 2;
+    public static final double rotateThree = 4;
+    public static final double rotateFour = 6;
 
     public static final double defaultExtend = 0;
     public static final double extendOne = 0;
-    public static final double extendTwo = 0.67;
-    public static final double extendThree = 1.33;
-    public static final double extendFour = 2.67;
+    public static final double extendTwo = 10;
+    public static final double extendThree = 20;
+    public static final double extendFour = 30;
   }
 
   public static class PneumaticsChannels {

@@ -25,8 +25,8 @@ public class ArmTeleopControl extends CommandBase {
   @Override
   public void initialize() {
     // Parameter "component" determines whether the rotation or the extension of the arm will be affected
-    RobotContainer.m_armController.a().onTrue(new DecrementPosition("rotate"));
-    RobotContainer.m_armController.y().onTrue(new IncrementPosition("rotate"));
+    // RobotContainer.m_armController.a().onTrue(new DecrementPosition("rotate"));
+    // RobotContainer.m_armController.y().onTrue(new IncrementPosition("rotate"));
     RobotContainer.m_armController.x().onTrue(new DecrementPosition("extend"));
     RobotContainer.m_armController.b().onTrue(new IncrementPosition("extend"));
 
@@ -43,12 +43,10 @@ public class ArmTeleopControl extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {    
-    ArmTeleopControl.rotateTarget += RobotContainer.m_armController.getLeftY() * -0.1;
+    // ArmTeleopControl.rotateTarget += RobotContainer.m_armController.getLeftY() * -0.1;
     ArmTeleopControl.extendTarget += RobotContainer.m_armController.getRightY() * -0.1;
     RobotContainer.arm.setRotatePosition(ArmTeleopControl.rotateTarget);
     RobotContainer.arm.setExtendPosition(ArmTeleopControl.extendTarget);
-    System.out.println("Rotate target: " + ArmTeleopControl.rotateTarget);
-    System.out.println("Extend target: " + ArmTeleopControl.extendTarget);
   }
 
   // Called once the command ends or is interrupted.
