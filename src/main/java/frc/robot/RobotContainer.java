@@ -34,11 +34,12 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     // Default Command(s)
-    // driveTrain.setDefaultCommand(new ArcadeDrive());
+    driveTrain.setDefaultCommand(new ArcadeDrive());
 
     // ArmTeleopControlPneumatics only has pneumatics, ArmTeleopControl has full functionality
     arm.setDefaultCommand(new ArmTeleopControl());
     // arm.setDefaultCommand(new ArmTeleopControlPneumatics());
+    driveTrain.setDefaultCommand(new ArcadeDrive());
   }
 
   /**
