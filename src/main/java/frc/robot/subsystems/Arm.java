@@ -25,8 +25,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
   // For the Shuffleboard
-  private NetworkTableEntry extension;
-  private NetworkTableEntry rotation;
+  private NetworkTableEntry leftExtension;
+  private NetworkTableEntry rightExtension;
+  private NetworkTableEntry leftRotation;
+  private NetworkTableEntry rightRotation;
 
   // Set up four arm motors over CAN (Neo motor type is brushless)
   CANSparkMax rotator = new CANSparkMax(ArmCANBusIDs.leftRotatorID, MotorType.kBrushless);
@@ -42,8 +44,10 @@ public class Arm extends SubsystemBase {
   SparkMaxPIDController extenderPID = extender.getPIDController();
 
   // Encoders to output current rotation and extension of the arm
-  RelativeEncoder rotatorEncoder = rotator.getEncoder();
-  RelativeEncoder extenderEncoder = extender.getEncoder();
+  RelativeEncoder leftRotateEncoder = rotator.getEncoder();
+  RelativeEncoder rightRotateEncoder = rotatorFollower.getEncoder();
+  RelativeEncoder leftExtendEncoder = extender.getEncoder();
+  RelativeEncoder rightExtendEncoder = extenderFollower.getEncoder();
   
   // Break beam sensors to automatically close the claw
   public DigitalInput breakBeamOne = new DigitalInput(0);
@@ -70,15 +74,19 @@ public class Arm extends SubsystemBase {
     // Make a NetworkTable
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable( "Arm Encoders");
-    rotation = table.getEntry("Rotation");
-    extension = table.getEntry("Extension");
+    leftRotation = table.getEntry("Left rotation");
+    rightRotation = table.getEntry("Right rotation");
+    leftExtension = table.getEntry("Left extension");
+    rightExtension = table.getEntry("Right extension");
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    rotation.setDouble(rotatorEncoder.getPosition());
-    extension.setDouble(extenderEncoder.getPosition());
+    leftRotation.setDouble(leftRotateEncoder.getPosition());
+    rightRotation.setDouble(rightRotateEncoder.getPosition());
+    leftExtension.setDouble(leftExtendEncoder.getPosition());
+    rightExtension.setDouble(rightExtendEncoder.getPosition());
   }
 
   public void setRotatePosition(double position) {

@@ -4,15 +4,19 @@
 
 package frc.robot.commands;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ArmPositions;
+
 import java.util.function.BooleanSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
-// ArmTeleopControl with only pneumatics
-public class ArmTeleopControlPneumatics extends CommandBase {
+public class ArmTeleopControlExtend extends CommandBase {
+  static double rotateTarget = ArmPositions.defaultRotate;
+  static double extendTarget = ArmPositions.defaultExtend;
+
   /** Creates a new ArmTeleopControl. */
-  public ArmTeleopControlPneumatics() {
+  public ArmTeleopControlExtend() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.arm);
   }
@@ -20,18 +24,26 @@ public class ArmTeleopControlPneumatics extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.m_armController.rightBumper().onTrue(new ClawControl("toggle"));
+    // Parameter "component" determines whether the rotation or the extension of the arm will be affected
+    RobotContainer.m_armController.x().onTrue(new DecrementPosition("extend"));
+    RobotContainer.m_armController.b().onTrue(new IncrementPosition("extend"));
 
-    BooleanSupplier breakBeamsState = () -> {
+    // RobotContainer.m_armController.rightBumper().onTrue(new ClawControl("toggle"));
+    // RobotContainer.m_armController.leftBumper().onTrue(new ArmReset());
+
+    /* BooleanSupplier breakBeamsState = () -> {
       return (!RobotContainer.arm.breakBeamOne.get() && !RobotContainer.arm.breakBeamTwo.get());
-    };
-    Trigger breakBeams = new Trigger(breakBeamsState);
-    breakBeams.onTrue(new ClawControl("close"));
+    }; */
+    // Trigger breakBeams = new Trigger(breakBeamsState);
+    // breakBeams.onTrue(new ClawControl("close"));
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {    
+    ArmTeleopControl.extendTarget += RobotContainer.m_armController.getRightY() * -0.1;
+    RobotContainer.arm.setExtendPosition(ArmTeleopControl.extendTarget);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
