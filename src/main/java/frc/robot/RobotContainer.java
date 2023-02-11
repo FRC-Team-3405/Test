@@ -36,9 +36,15 @@ public class RobotContainer {
     // Default Command(s)
     driveTrain.setDefaultCommand(new ArcadeDrive());
 
-    // ArmTeleopControlPneumatics only has pneumatics, ArmTeleopControl has full functionality
+    /* ArmTeleopControlRotate and ArmTeleopControlExtend only control rotation
+     * and extension respectively, ArmTeleopControlPneumatics only controls pneumatics,
+     * and ArmTeleopControl has full functionality
+     */
     arm.setDefaultCommand(new ArmTeleopControl());
-    // arm.setDefaultCommand(new ArmTeleopControlPneumatics());
+    arm.setDefaultCommand(new ArmTeleopControlRotate());
+    arm.setDefaultCommand(new ArmTeleopControlExtend());
+    arm.setDefaultCommand(new ArmTeleopControlPneumatics());
+
     // driveTrain.setDefaultCommand(new ArcadeDrive());
   }
 
