@@ -41,9 +41,9 @@ public class RobotContainer {
      * and ArmTeleopControl has full functionality
      */
     arm.setDefaultCommand(new ArmTeleopControl());
-    arm.setDefaultCommand(new ArmTeleopControlRotate());
-    arm.setDefaultCommand(new ArmTeleopControlExtend());
-    arm.setDefaultCommand(new ArmTeleopControlPneumatics());
+    // arm.setDefaultCommand(new ArmTeleopControlRotate());
+    // arm.setDefaultCommand(new ArmTeleopControlExtend());
+    // arm.setDefaultCommand(new ArmTeleopControlPneumatics());
 
     // driveTrain.setDefaultCommand(new ArcadeDrive());
   }
