@@ -4,7 +4,10 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PneumaticHub;
+import edu.wpi.first.wpilibj.PneumaticsControlModule;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -16,6 +19,8 @@ import frc.robot.Constants.CANBusIDs.DriveCANBusIDs;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class DriveTrain extends SubsystemBase {
+  private final Compressor m_compressor = new Compressor(PneumaticsModuleType.CTREPCM);
+  // public final PneumaticsControlModule pcm = new PneumaticsControlModule(0);
   private final DoubleSolenoid shifter = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, DriveCANBusIDs.P_HIGHGEAR, DriveCANBusIDs.P_LOWGEAR);
   public static boolean LowGear = false;
   public final WPI_TalonSRX frontLeft = new WPI_TalonSRX(DriveCANBusIDs.frontleftMotorID);
