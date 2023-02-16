@@ -43,8 +43,12 @@ public final class Constants {
     }
 
     public static class DriveCANBusIDs {
-      public static final int leftMotorID = 2;
-      public static final int rightMotorID = 3;
+      public static final int frontleftMotorID = 3;
+      public static final int backleftMotorID = 4;
+      public static final int frontrightMotorID = 1;
+      public static final int backrightMotorID = 2;
+      public static final int P_HIGHGEAR = 4;
+      public static final int P_LOWGEAR = 5;
     }
   }
   
