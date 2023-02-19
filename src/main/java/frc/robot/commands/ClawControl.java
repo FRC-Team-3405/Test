@@ -25,9 +25,9 @@ public class ClawControl extends CommandBase {
   @Override
   public void execute() {
     if (action.equals("close")) {
-      RobotContainer.arm.closeClaw();
+      return;
     } else if (action.equals("open")) {
-      RobotContainer.arm.openClaw();
+      return;
     } else if (action.equals("toggle")) {
       RobotContainer.arm.toggleClaw();
     }

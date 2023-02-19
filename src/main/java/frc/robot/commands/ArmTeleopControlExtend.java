@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class ArmTeleopControlExtend extends CommandBase {
-  static double rotateTarget = ArmPositions.defaultRotate;
   static double extendTarget = ArmPositions.defaultExtend;
 
   /** Creates a new ArmTeleopControl. */
@@ -41,8 +40,8 @@ public class ArmTeleopControlExtend extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {    
-    ArmTeleopControl.extendTarget += RobotContainer.m_armController.getRightY() * -0.1;
-    RobotContainer.arm.setExtendPosition(ArmTeleopControl.extendTarget);
+    ArmTeleopControlExtend.extendTarget += RobotContainer.m_armController.getRightY() * -0.1;
+    RobotContainer.arm.setExtendPosition(ArmTeleopControlExtend.extendTarget);
   }
 
   // Called once the command ends or is interrupted.

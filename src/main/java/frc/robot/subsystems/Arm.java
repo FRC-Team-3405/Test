@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
@@ -37,7 +38,8 @@ public class Arm extends SubsystemBase {
   CANSparkMax extenderFollower = new CANSparkMax(ArmCANBusIDs.rightExtenderID, MotorType.kBrushless);
 
   // Forward channel opens claw, reverse channel closes claw
-  DoubleSolenoid claw =  new DoubleSolenoid(PneumaticsModuleType.REVPH, PneumaticsChannels.clawOpen, PneumaticsChannels.clawClose);
+  private boolean isClosed = false;
+  DoubleSolenoid claw =  new DoubleSolenoid(PneumaticsModuleType.CTREPCM, PneumaticsChannels.clawOpen, PneumaticsChannels.clawClose); // Change back to REV PH when we get the chance
 
   // PID controller to control the rotation and extension of the arm
   SparkMaxPIDController rotatorPID = rotator.getPIDController();
@@ -78,6 +80,8 @@ public class Arm extends SubsystemBase {
     rightRotation = table.getEntry("Right rotation");
     leftExtension = table.getEntry("Left extension");
     rightExtension = table.getEntry("Right extension");
+
+    claw.set(Value.kReverse);
   }
 
   @Override
@@ -97,15 +101,15 @@ public class Arm extends SubsystemBase {
     extenderPID.setReference(position, ControlType.kPosition);
   }
 
-  public void closeClaw() {
-    claw.set(Value.kReverse);
-  }
-
-  public void openClaw() {
-    claw.set(Value.kForward);
-  }
-
   public void toggleClaw() {
     claw.toggle();
+    isClosed = !isClosed;
+  }
+
+  public CommandBase ToggleClaw() {
+    return runOnce(
+      () -> {
+        toggleClaw();
+      });
   }
 }

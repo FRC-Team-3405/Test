@@ -30,8 +30,8 @@ public final class Constants {
   public static class PneumaticsChannels {
     public static final int highGear = 0;
     public static final int lowGear = 1;
-    public static final int clawClose = 4;
-    public static final int clawOpen = 5;
+    public static final int clawClose = 6;
+    public static final int clawOpen = 7;
   }
 
   public static class CANBusIDs {
